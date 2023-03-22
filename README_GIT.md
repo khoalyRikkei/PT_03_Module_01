@@ -1,0 +1,2 @@
+- Tạo tài khoản github qua email
+- Tạo repositories

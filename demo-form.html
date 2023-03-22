@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo form</title>
+  </head>
+  <body>
+    <header><h1>Demo HTML Form - 20/03/2023</h1></header>
+    <main>
+      <form action="" id="form-dang-ky">
+        <label for="email">Email đăng ký</label>
+        <input type="text" id="email" name="email" />
+        <br /><br />
+        <label for="name">Họ và tên</label>
+        <input type="text" id="name" name="name" maxlength="5" />
+        <br /><br />
+        <label for="age">Tuổi</label>
+        <input type="number" id="age" name="age" min="0" max="100" />
+        <br /><br />
+        <label for="doB">Ngày sinh</label>
+        <input type="date" id="doB" name="doB" />
+        <br /><br />
+        <label for="question-1">Đã tốt nghiệp</label>
+        <input type="checkbox" id="question-1" name="question-01" />
+        <br /><br />
+        <label for="">Nơi sinh</label>
+        <select name="poB" id="poB" name="poB">
+          <option value="43">Đà Nẵng</option>
+          <option value="92">Quảng Nam</option>
+          <option value="76">Quảng Ngãi</option>
+        </select>
+
+        <br /><br />
+        <label for="hobbit">Sở thích</label>
+        <br />
+        <label for="chess">Chơi cờ</label>
+        <input type="checkbox" id="chess" value="chess" name="hobbit_1" />
+        <br />
+        <label for="guitar">Chơi guitar</label>
+        <input type="checkbox" id="guitar" value="guitar" name="hobbit_2" />
+        <br />
+        <label for="game">Chơi game</label>
+        <input type="checkbox" id="game" value="game" name="hobbit_3" />
+        <br />
+        <br />
+        <label for="gender">Giới tính: </label>
+        <label for="male">Nam</label>
+        <input type="radio" id="male" name="gender" value="true" />
+        <label for="female">Nữ</label>
+        <input type="radio" id="female" name="gender" value="false" />
+        <br />
+
+        <br />
+        <label for="msg">Message</label>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <br />br
+        <input type="button" value="Check thông tin" />
+
+        <input type="submit" value="Đăng ký" />
+      </form>
+      <br /><br />
+      <fieldset>
+        <legend>Form đăng ký</legend>
+        <form action="" id="form-dang-nhap">
+          <input type="email" placeholder="Điền email" />
+          <input type="password" placeholder="Vui lòng nhập password" />
+          <input type="submit" value="Đăng nhập" />
+          <input type="reset" value="Reset form" />
+        </form>
+      </fieldset>
+    </main>
+  </body>
+</html>
