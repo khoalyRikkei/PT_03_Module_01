@@ -1,0 +1,52 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  grid-template-areas:
+    "header header header header header"
+    "nav nav nav nav nav"
+    "aside-left main main main aside-right"
+    "footer footer footer footer footer";
+}
+body > * {
+  border: 2px solid red;
+}
+
+header {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: header;
+  height: 50px;
+}
+nav {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: nav;
+  height: 50px;
+}
+main {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: main;
+}
+footer {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: footer;
+  height: 50px;
+}
+.aside-left {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: aside-left;
+}
+.aside-right {
+  /* đặt tên tùy chọn cho vùng grid */
+  grid-area: aside-right;
+}
+
+/* css album */
+
+.album {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+img {
+  width: 100%;
+}

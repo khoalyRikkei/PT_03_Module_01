@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  gap: 20px;
+  /* flex-direction: dàn trang theo hướng nào? (mặc định là row) */
+  /* flex-wrap - tràn dòng (mặc định là no-wrap) */
+  height: 500px;
+}
+.item {
+  width: 200px;
+  height: 300px;
+  border: 2px solid red;
+  font-size: 100px;
+}
+
+.item-1 {
+  flex: 2;
+  /* flex: flex-grow flex-shrink flex-basis
+   flex: 2 0 auto */
+}
+.item-2 {
+  flex: 2;
+  align-self: center;
+  order: 1;
+}
+.item-3 {
+  flex: 2;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  font-size: 30px;
+}
+a {
+  text-decoration: none;
+}
+.logo {
+  width: 150px;
+}
+img {
+  width: 100%;
+}
+.menu {
+  display: flex;
+  gap: 20px;
+}
