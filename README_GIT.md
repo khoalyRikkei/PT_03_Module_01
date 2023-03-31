@@ -27,3 +27,11 @@
 <!-- Chuyển branch -->
 
 git checkout <ten_branch>
+
+<!--  Kiểm tra tất cả branch-->
+
+git branch -a
+
+<!-- Kiểm tra sự thay đổi của repo -->
+
+git fetch --all
