@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(../images/Decore.png);
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 2000px;
+  padding: 10px 50px;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero {
+  position: relative;
+  top: 200px;
+}
+.hero-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.hero-img {
+  position: absolute;
+  width: 50%;
+  top: 50px;
+  right: 0;
+}
+.hero-sub-title {
+  text-transform: uppercase;
+  color: #df6951;
+  font-weight: 700;
+}
+.hero-title {
+  font-size: 84px;
+  font-family: "Volkhov", serif;
+  width: 600px;
+}
+
+.hero-btn > button:first-child {
+  background-color: orange;
+  padding: 15px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+}
