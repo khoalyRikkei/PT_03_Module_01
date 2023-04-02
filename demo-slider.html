@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo slider</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/demo-slider.css" />
+  </head>
+  <body>
+    <!-- Nhúng thư viện icon vào CSS qua fontawesome -->
+
+    <!-- Phân tích cấu trúc và triển khai ý tưởng slider -->
+
+    <div class="bg-slider">
+      <div class="slider">
+        <img src="./images/image-1.jpg" alt="" id="image-01" />
+        <div class="slider-control">
+          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+      <div class="dots">
+        <i class="fa-solid fa-circle active"></i
+        ><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i
+        ><i class="fa-solid fa-circle"></i>
+      </div>
+    </div>
+
+    <!-- Tạo đồng loạt nhiều hình ảnh -->
+    <div class="bg-slider">
+      <div id="slide-1">
+        <div class="slider">
+          <img src="./images/image-1.jpg" alt="" />
+          <div class="slider-control">
+            <a href="#slide-4"><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#slide-2"><i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="dots">
+          <i class="fa-solid fa-circle active"></i
+          ><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i
+          ><i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div id="slide-2">
+        <div class="slider">
+          <img src="./images/image-2.jpg" alt="" />
+          <div class="slider-control">
+            <a href="#slide-1"><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#slide-3"><i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i
+          ><i class="fa-solid fa-circle active"></i
+          ><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div id="slide-3">
+        <div class="slider">
+          <img src="./images/image-3.jpeg" alt="" />
+          <div class="slider-control">
+            <a href="#slide-2"><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#slide-4"><i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i> <i class="fa-solid fa-circle"></i
+          ><i class="fa-solid fa-circle active"></i
+          ><i class="fa-solid fa-circle"></i>
+        </div>
+      </div>
+      <div id="slide-4">
+        <div class="slider">
+          <img src="./images/image-4.jpg" alt="" />
+          <div class="slider-control">
+            <a href="#slide-3"><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#slide-1"><i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="dots">
+          <i class="fa-solid fa-circle"></i> <i class="fa-solid fa-circle"></i
+          ><i class="fa-solid fa-circle"></i
+          ><i class="fa-solid fa-circle active"></i>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h3>Ví dụ CDN</h3>
+      <div>Home: <i class="fa-solid fa-house-user"></i></div>
+
+      <div>Phone: <i class="my-icon icon-phone"></i></div>
+    </section>
+  </body>
+</html>
