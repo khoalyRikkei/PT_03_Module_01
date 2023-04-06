@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 1 - Tính điểm trung bình</title>
+    <style>
+      .card {
+        border: 2px solid green;
+        padding: 30px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h3>Bài tập 1</h3>
+      <button onclick="calculateArea()">
+        Tính diện tích hình tam giác vuông
+      </button>
+      <button onclick="calculateMark()">Nhập điểm thi</button>
+    </section>
+
+    <script>
+      // Bài tập 1
+      function calculateArea() {
+        const a = Number(prompt("Nhập vào cạnh a"));
+        const b = Number(prompt("Nhập vào cạnh b"));
+        const S = (a * b) / 2;
+
+        alert("Diện tích tam giác vuông là" + S);
+      }
+
+      function calculateMark() {
+        //
+        // Number() --> chuyển thành Number
+        // parseFloat() --> lấy phần số thực
+        // +
+        // parseInt() --> Lấy phần nguyên
+
+        //   Chuyển string thành Number
+        const mathMark = Number(prompt("Nhập điểm toán"));
+        const physicsMark = Number(prompt("Nhập điểm Lý"));
+
+        const biologyMark = Number(prompt("Nhập điểm Sinh"));
+        const sum = mathMark + physicsMark + biologyMark;
+        const average = sum / 3;
+        console.log("Kiểm tra tổng", sum, "trung bình cộng là:", average);
+        //   toFixed(x) ; x là số làm tròn sau dấu phẩy
+      }
+    </script>
+  </body>
+</html>
