@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 07 - Array</title>
+    <style>
+      .card {
+        border: 2px solid green;
+        padding: 50px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h3>Bài 2 - Chèn giữa số chẵn</h3>
+      <input type="text" id="input-string" />
+      <button onclick="handleCheck()">Check</button>
+      <br />
+      <p class="result-1">Hello</p>
+    </section>
+
+    <script>
+      // Bài 1
+      function handleCheck() {
+        // Lấy được element trong HTML --> .value --> lấy giá trị của input
+        const valueInput = document.querySelector("#input-string").value;
+
+        // Lấy result để có thể gán lại kết quả
+        const result1 = document.querySelector(".result-1"); //
+        console.log("Kiểm tra result", result1);
+
+        // Tạo một biến tạm lưu trữ dữ liệu
+        let contentResult = "";
+        for (let i = 0; i < valueInput.length; i++) {
+          if (valueInput[i] % 2 == 0 && valueInput[i + 1] % 2 == 0) {
+            contentResult += valueInput[i] + "-";
+          } else {
+            contentResult += valueInput[i];
+          }
+        }
+        result1 = contentResult;
+      }
+      const students = ["Tín", "Sơn", "Trung", "Việt"];
+
+      //   Trong mảng : chiều dài mảng - array.length
+      //  phần tử thứ i trong mảng array[i]
+      console.log("Kiểm tra student", students);
+      console.log("Kiểm tra học sinh có index = 2:", students[2]);
+      console.log("Kiểm tra chiều dài mảng: ", students.length);
+
+      const coordinates = [
+        [1, 2, 3],
+        [4, 6, 3],
+        [0, 4, 2],
+      ];
+      console.log("Tọa độ: ", coordinates);
+      console.log(
+        "Số có giá trị 6 nằm ở vị trí dòng 1 col 1",
+        coordinates[1][1]
+      );
+
+      //   Đối với method của array hoặc bất kỳ method nào:
+      // 1. Đọc định nghĩa, mothod đó có return gì hay không
+      // 2. Đọc syntax
+      // 3. Đọc ví dụ
+
+      // Method thường sử dụng trong Array
+      /**
+       * @create:
+       *    - push()
+       *    - unshift()
+       *    - splice()
+       * @read
+       *    - map()
+       *    - forEach()
+       * @update
+       *    - splice()
+       *
+       * @delete
+       *    - splice()
+       *    - pop()
+       *    - shift()
+       * Một số phương thức quan trọng khác
+       *
+       *    - includes()
+       *    - find()
+       *    - join()
+       *    - split()
+       *    - filter()
+       *
+       */
+
+      const cars = ["BMW", "Mec", "Huyndai", "Huyndai", "Huyndai", "Ford"];
+      const totalCar = cars.push("Toyota");
+      console.log("Kiểm tra xe", cars, totalCar);
+      const itemRomove = cars.shift();
+      console.log("Kiểm tra xe đã xóa", itemRomove, "Số xe còn lại", cars);
+      const slogan = "Rikkei Academy - Để nông dân biết code";
+      //   slogan.push("Hello"); --> Lỗi slogan không phải array
+
+      console.log(
+        "Kiểm tra phần tử có trong string hoặc mảng",
+        slogan.includes("code")
+      );
+
+      const isMec = cars.includes("Mec");
+      console.log("Kiểm tra có Mec trong garage", isMec);
+
+      //   const findHuyndai = cars.find((item) => item === "Huyndai");
+      const findHuyndai = cars.find(function (item, index, array) {
+        if (item === "Huyndai") {
+          return true;
+        }
+      });
+      console.log("Tìm xe Huyndai", findHuyndai);
+
+      const colors = ["grey", "red", "orange", "purple", "pink", "green"];
+
+      for (let i = 0; i < colors.length; i++) {
+        console.log(
+          "%c Màu của tôi là đây",
+          `color: ${colors[i]}; font-size: 20px`
+        );
+      }
+
+      for (const color of colors) {
+        console.log(
+          "%c Màu của tôi là đây thay đổi lần 2",
+          `color: ${color}; font-size: 20px`
+        );
+      }
+
+      for (const index in colors) {
+        console.log(
+          "Phần tử trong mảng color",
+          index,
+          "có giá trị: ",
+          colors[index]
+        );
+      }
+
+      //   ForEach()
+
+      const result = colors.forEach((color, i, array) => {
+        console.log("Phần tử color thứ " + i + " có màu " + color);
+      });
+
+      console.log("Kiểm tra kết quả", result);
+
+      const resultMap = colors.map((item) => item + " không có màu đâu");
+      console.log("Kết quả của map", resultMap);
+    </script>
+  </body>
+</html>
