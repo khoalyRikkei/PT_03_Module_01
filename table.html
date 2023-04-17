@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="row table, col table" id="input-table" />
+    <button>Tạo bảng</button>
+    <table id="my-table" border="3" cellpadding="10"></table>
+
+    <script>
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", () => {
+        const valueInput = document.querySelector("#input-table").value;
+        // Chuyển đổi sang array
+        const arrayConvert = valueInput.split(" ");
+
+        // Lấy dòng và cột của table
+        const maxRow = arrayConvert[0];
+        const maxCol = arrayConvert[1];
+        const table = document.querySelector("#my-table");
+        for (let row = 0; row < maxRow; row++) {
+          const tr = document.createElement("tr");
+          for (let col = 0; col < maxCol; col++) {
+            const td = document.createElement("td");
+            tr.appendChild(td);
+          }
+          table.appendChild(tr);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+      body {
+        height: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="item"
+      onclick="handleClick()"
+      onmousedown="handleOnMouseDown()"
+      onmouseover="handleOnMouseOver()"
+      onmousemove="handleOnMouseMove()"
+      onmouseout="handOnMouseOut()"
+    ></div>
+    <input type="text" id="test-1" />
+
+    <script>
+      //   Làm việc với Event
+
+      function handleClick() {
+        console.log("Click");
+      }
+      function handleOnMouseDown() {
+        console.log("mouse down");
+      }
+      function handleOnMouseOver() {
+        console.log("mouse over");
+      }
+      function handleOnMouseMove() {
+        console.log("move");
+      }
+      function handOnMouseOut() {
+        console.log("out");
+      }
+
+      const test1 = document.querySelector("#test-1");
+      test1.addEventListener("input", (event) => {
+        console.log(event.target.value);
+      });
+      window.addEventListener("scroll", (e) => {
+        console.log(window.pageYOffset);
+      });
+      window.addEventListener("keydown", (e) => {
+        console.log(e);
+        if (e.shiftKey) {
+          console.log("kết quả inh Hoa", e.key);
+        }
+      });
+    </script>
+  </body>
+</html>
