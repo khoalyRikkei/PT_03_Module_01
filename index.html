@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 16 - Object</title>
+  </head>
+  <body>
+    <header><h1>Session 16 - Object</h1></header>
+
+    <input
+      type="text"
+      placeholder="Nhập vào kích thước chiều rộng"
+      id="width-box"
+    />
+    <input
+      type="text"
+      placeholder="Nhập vào kích thước chiều cao"
+      id="height-box"
+    />
+    <button onclick="handleDrawing()">Vẽ hình</button>
+    <div class="info-box"></div>
+    <div class="box"></div>
+
+    <script src="./rectangle.js"></script>
+    <script>
+      const car = {
+        brand: "BMW",
+        model: "X7",
+        color: "Yellow",
+        price: 50000,
+        quantity: 20,
+        sale: () => {
+          this.quantity--;
+        },
+      };
+
+      car.brand = "Toyota";
+      car.sale();
+
+      console.log("Hãng xe:", car.brand);
+      console.log("Kiểm tra số lượng tồn kho", car);
+
+      function Stundent(name, age, weight, address) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.address = address;
+        this.getEat = () => {
+          this.weight++;
+        };
+      }
+      // Tạo Object thông qua function
+      const person1 = new Stundent("Sơn", 26, 67, "ĐN");
+      console.log(person1);
+
+      person1.getEat();
+      console.log(person1);
+
+      function Car(model, price) {
+        const priceSale = price * 1.2;
+        this.getPrice = () => priceSale;
+      }
+
+      const car2 = new Car("VF8", 900);
+
+      console.log("Kiểm tra xe", car2);
+      console.log("Kiểm tra giá xe", car2.getPrice());
+
+      let lastName = "Lê";
+      const student = {
+        firstName: "Tín",
+        lastName: "Trần",
+        fullName: function () {
+          return this.firstName + " " + lastName;
+        },
+
+        age: 20,
+      };
+
+      console.log("Kiểm tra tên", student.fullName());
+
+      //   Có 2 cách lấy giá trị của key:
+      // Cách 1:
+      console.log("cach 1", student.firstName);
+
+      //   Cách 2:
+      let key = "lastName";
+
+      console.log("cach 2", student[key]);
+      console.log(student.key);
+
+      const students = [
+        new Stundent("Sơn", 26, 67, "ĐN"),
+        new Stundent("Việt", 18, 75, "ĐN"),
+      ];
+
+      console.log("Kiểm tra học sinh trong lớp", students[0]);
+
+      class Cat {
+        constructor(name, color, weight, sex) {
+          this.name = name;
+          this.color = color;
+          this.weight = weight;
+          this.sex = sex;
+        }
+
+        speak() {
+          return "Meo Meo";
+        }
+
+        run = function () {};
+        catchMouse(mouse) {
+          mouse.speak();
+          mouse.setStatus(false);
+          this.weight += 0.2;
+        }
+      }
+
+      function Mouse(name, weight, status) {
+        this.status = status;
+        this.name = name;
+        this.weight = weight;
+        this.run = () => "Chạy";
+        this.speak = () => "Chit chit";
+        this.setStatus = (status) => (this.status = status);
+      }
+
+      const tom = new Cat("Tom", "black", 5, 0);
+
+      const jerry = new Mouse("Jerrry", 0.3, true);
+
+      //   Mèo Tom bắt chuột Jerry
+
+      tom.catchMouse(jerry);
+
+      //   Object là một kiểu dữ liệu tham chiếu
+
+      const student2 = student;
+      student2.firstName = "Sáng";
+
+      console.log("Kiểm tra student2", student2);
+      console.log("Kiểm tra student", student);
+    </script>
+  </body>
+</html>
