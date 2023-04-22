@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Object</title>
+</head>
+
+<body>
+    <script>
+        let student1 = {
+            studentId: "SV001",
+            studentName: "Nguyễn Văn A",
+            age: 20
+        }
+        let student2 = student1;
+        student1.address = "Đà Nẵng";
+        console.log("Thông tin sinh viên 2--->", student2);
+        // Các cách clone đối tượng
+        // Cách 1: Sử dụng cú pháp spreed của ES6
+        let student3 = { ...student1 };
+        student1.phone = "03555914029";
+        console.log("Thông tin sinh viên 3--->", student3);
+        // Cách 2: Sử dụng JSON
+        let student4 = JSON.parse(JSON.stringify(student1));
+        student1.email = "quangnd@rikkeisoft.com";
+        console.log("Thông tin sinh viên 4--->", student4);
+        // Cách 3: dùng assign
+        let student5 = Object.assign({}, student1);
+        student1.sex = true;
+        console.log("Thông tin sinh viên 5--->", student5);
+    </script>
+</body>
+
+</html>

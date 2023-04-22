@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truy cập thuộc tính, phương thức đối tượng</title>
+</head>
+
+<body>
+    <script>
+        let student = {
+            studentId: "SV001",
+            studentName: "Nguyễn Văn A",
+            age: 20,
+            sex: true,
+            study: function () {
+                return "Learn HTML, CSS, JS at Rikkei Academy";
+            }
+        }
+        // Truy cập vào thuộc tính của đối tượng
+        // 1. In ra tên sinh viên
+        console.log("Tên sinh viên: ", student.studentId);
+        // 2. In ra tuổi sinh viên
+        console.log("Tuổi sinh viên: ", student['age']);
+        // Truy cập vào phương thức của đối tượng
+        // Cho sinh viên học
+        console.log(student.study());
+        // Thêm thuộc tính, phương thức cho đối tượng
+        student.address = "Đà Nẵng";
+        student.love = function () {
+            return "love beautiful girl";
+        }
+        console.log("Thông tin sinh viên--->", student);
+        // Xóa thuộc tính, phương thức của đối tượng
+        delete student.address;
+        delete student.love;
+        console.log("Thông tin sinh viên sau khi xóa--->", student);
+
+
+    </script>
+</body>
+
+</html>

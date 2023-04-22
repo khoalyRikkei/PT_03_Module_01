@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khởi tạo đối tượng</title>
+</head>
+
+<body>
+    <script>
+        // Cách 1: Khởi tạo đối tượng từ Object Literal
+        let student_1 = {
+            // Khai báo các thuộc tính
+            studentId: "SV001",
+            studentName: "Nguyễn Văn A",
+            age: 20,
+            sex: true,
+            // Khai báo các hành vi - method, function
+            study: function () {
+                return "Learn HTML, CSS, Javascript for frontend programming at Rikkei Academy DN";
+            },
+            love: function () {
+                console.log("I love beautiful girl");
+            }
+        }
+        console.log('Student 1 Info:', student_1);
+        // Cách 2: Khởi tạo đối tượng từ constructor function
+        function Student(studentId, studentName, age, sex) {
+            // Khai báo các thuộc tính của đối tượng
+            this.studentId = studentId;
+            this.studentName = studentName;
+            this.age = age;
+            this.sex = sex;
+            // Khai báo các hành vi - method,function
+            function study() {
+                return "Learn HTML, CSS, Javascript for frontend programming at Rikkei Academy DN";
+            }
+            function love() {
+                console.log("I love beautiful girl");
+            }
+        }
+        let student_2 = new Student("SV002", "Nguyễn Văn B", 22, false);
+        console.log("Student 2 Info:", student_2);
+        // Cách 3: Khởi tạo đối tượng từ Object
+        let student_3 = new Object();
+        console.log("Student 3 Info:", student_3);
+        // Cách 4: Khởi tạo đối tượng từ Class
+        class Student_Class {
+            // Khai báo các thuộc tính
+            // Hàm tạo --> khởi tạo đối tượng (duy nhất 1)
+            constructor(studentId, studentName, age, sex) {
+                this.studentId = studentId;
+                this.studentName = studentName;
+                this.age = age;
+                this.sex = sex;
+            }
+            //Khai báo các phương thức
+            getStudentId() {
+                return this.studentId;
+            }
+            setStudentId(studentId) {
+                this.studentId = studentId;
+            }
+            study() {
+                return "Learn HTML, CSS, Javascript for frontend programming at Rikkei Academy DN";
+            }
+            love() {
+                console.log("I love beautiful girl");
+            }
+        }
+        // Khởi tạo đối tượng từ lớp Student (constructor)
+        let student_4 = new Student_Class("SV004", "Nguyễn Văn D", 30, true);
+        console.log("Student 4 Info:", student_4);
+    </script>
+</body>
+
+</html>
