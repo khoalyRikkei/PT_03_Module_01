@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Temperature(t) {
+        this.t = t;
+        this.convertF = () => {
+          const F = 1.8 * this.t + 32;
+          return F;
+        };
+        this.convertK = () => this.t + 273.15;
+      }
+
+      const temperature_1 = new Temperature(25);
+      const F = temperature_1.convertF();
+      const K = temperature_1.convertK();
+
+      console.log(
+        "Nhiệt độ đã chuyển đổi lần lượt theo độ F và độ K là",
+        F,
+        "và",
+        K
+      );
+    </script>
+  </body>
+</html>

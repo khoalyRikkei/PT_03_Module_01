@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập Object</title>
+    <style>
+      .card {
+        margin-bottom: 20px;
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h3>Tính lương nhân viên</h3>
+
+      <!-- <button onclick="caclulateSalary()">Tính lương</button> -->
+
+      <!-- input để nhập tên nhân viên -->
+    </section>
+
+    <script>
+      function caclulateSalary(salaryObj) {
+        let sum = 0;
+        for (const employee in salaryObj) {
+          sum = sum + salaryObj[employee];
+          // sum += salaryObj[employee]
+        }
+        return sum;
+      }
+      const businessSalary = {
+        emp1: 1000,
+        emp2: 2000,
+        emp3: 5000,
+      };
+      const businessSalarySum = caclulateSalary(businessSalary);
+
+      console.log("Kiểm tra lương nhân viên", businessSalarySum);
+      let a = 12,
+        b = 3;
+      [a, b] = [b, a];
+    </script>
+  </body>
+</html>

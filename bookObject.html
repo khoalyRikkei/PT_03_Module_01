@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      placeholder="Tìm kiếm sách"
+      oninput="handleOninput(this.value)"
+    />
+    <table cellpadding="15">
+      <caption>
+        <h3>Kệ sách tri thức thế giới</h3>
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Tên sách</th>
+          <th>Tác giả</th>
+          <th>Giá</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      function Book(id, name, author, price, status) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.status = status;
+
+        // this.getId = () => this.id;
+        // this.getName = () => this.name;
+        // this.getAuthor = () => this.author;
+        // this.getPrice = () => this.price;
+        // this.getStatus = () => this.status;
+        return {
+          id: this.id,
+          name: this.name,
+          author: this.author,
+          price: this.price,
+          status: this.status,
+        };
+      }
+
+      function BookShelf() {
+        this.books = [];
+
+        // Thêm sách vào: Create
+        this.addBook = (book) => this.books.push(book);
+
+        // Hiển thị thông tin sách: Read
+        this.getBooks = () => this.books;
+
+        // Cập nhật thông tin cuốn sách: Update
+        this.updateBook = (bookId, newInfo) => {
+          this.books.forEach((book, index) => {
+            if (book.id === bookId) {
+              this.books.splice(index, 1, { ...book, ...newInfo });
+              //  {
+              // book
+              //   id: this.id,
+              //   name: this.name,
+              //   author: this.author,
+              //   price: this.price,
+              //   status: this.status,
+
+              // newInfo
+              // price: 150000, status: false
+              // }
+            }
+          });
+        };
+
+        // Xóa sách - Delete
+        this.removeBook = (bookId) => {
+          this.books.forEach((book, index) => {
+            if (book.id === bookId) {
+              this.books.splice(index, 1);
+            }
+          });
+        };
+
+        // Sắp xếp sách - read
+        this.sortBook = () => {
+          this.books.sort((book1, book2) => book1.price - book2.price);
+        };
+
+        // Tìm kiếm sách theo tên:
+        this.findBook = (bookName) => {
+          const result = this.books.filter((book) =>
+            book.name.toLowerCase().includes(bookName.toLowerCase())
+          );
+          return result;
+        };
+      }
+
+      const newBook1 = new Book(
+        "B1",
+        "Đắc nhân tâm",
+        "Dale Carnegie",
+        85000,
+        true
+      );
+
+      const newBook2 = new Book(
+        "B2",
+        "Cha Giàu Cha Nghèo",
+        "Robert Kiyosaki",
+        100000,
+        true
+      );
+
+      const newBook3 = new Book(
+        "B3",
+        "Nhà giả kim ",
+        "Paulo Coelho",
+        70000,
+        true
+      );
+      const bookShelf_1 = new BookShelf();
+      //   Thêm sách vào kệ
+      bookShelf_1.addBook(newBook1);
+      bookShelf_1.addBook(newBook2);
+      bookShelf_1.addBook(newBook3);
+      bookShelf_1.sortBook();
+      bookShelf_1.updateBook("B1", { price: 150000, status: false });
+      console.log("Kệ sách", bookShelf_1);
+
+      //   Loại bỏ sách khỏi kệ
+      //   bookShelf_1.removeBook("B2");
+      //   console.log("Kệ sách sau remove", bookShelf_1);
+
+      // Thực hiện hiển thị trong giao diện
+
+      renderBooks(bookShelf_1);
+      function renderBooks(bookShelf, isSearch) {
+        const tbodyElement = document.querySelector("tbody");
+        let contentBody = "";
+
+        if (!isSearch) {
+          bookShelf.getBooks().forEach((book, index) => {
+            contentBody += `
+          <tr>
+          <td>${index + 1}</td>
+          <td>${book.name}</td>
+          <td>${book.author}</td>
+          <td>${book.price}</td>
+          </tr>
+
+          `;
+          });
+        } else {
+          bookShelf.forEach((book, index) => {
+            contentBody += `
+          <tr>
+          <td>${index + 1}</td>
+          <td>${book.name}</td>
+          <td>${book.author}</td>
+          <td>${book.price}</td>
+          </tr>
+          `;
+          });
+        }
+
+        tbodyElement.innerHTML = contentBody;
+      }
+
+      function handleOninput(searchValue) {
+        const searchResult = bookShelf_1.findBook(searchValue);
+        console.log(searchResult);
+        renderBooks(searchResult, "search");
+      }
+    </script>
+  </body>
+</html>
