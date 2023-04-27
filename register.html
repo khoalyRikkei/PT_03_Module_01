@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Add padding to containers */
+      .container {
+        padding: 16px;
+        background-color: white;
+      }
+
+      /* Full-width input fields */
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+
+      /* Overwrite default styles of hr */
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+
+      /* Set a style for the submit button */
+      .registerbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+
+      .registerbtn:hover {
+        opacity: 1;
+      }
+
+      /* Add a blue text color to links */
+      a {
+        color: dodgerblue;
+      }
+
+      /* Set a grey background color and center the text of the "sign in" section */
+      .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr />
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" />
+        <p id="email-error"></p>
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="psw"
+        />
+        <p id="password-error"></p>
+
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input
+          type="password"
+          placeholder="Repeat Password"
+          name="psw-repeat"
+          id="psw-repeat"
+        />
+
+        <button type="submit" class="registerbtn" onclick="handleSubmit()">
+          Register
+        </button>
+      </div>
+
+      <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+      </div>
+    </div>
+
+    <script>
+      function handleSubmit() {
+        // B1: Lấy value từ input
+        const emailValue = document.querySelector("#email").value;
+        const passwordValue = document.querySelector("#psw").value;
+        const passwordRepeatValue = document.querySelector("#psw-repeat").value;
+
+        const user = { email: emailValue, password: passwordValue };
+
+        // B2: Kiểm duyệt dữ liệu
+
+        const checkError = validate(user);
+
+        const emailErrror = document.querySelector("#email-error");
+        const passwordErrror = document.querySelector("#password-error");
+
+        if (checkError.isError) {
+          emailErrror.innerHTML = checkError.emailMsg;
+          passwordErrror.innerHTML = checkError.passwordMsg;
+          return;
+        } else {
+          emailErrror.innerHTML = "";
+          passwordErrror.innerHTML = "";
+        }
+
+        // B3: Lấy dữ liệu từ localStorage về
+
+        const usersLocal = JSON.parse(localStorage.getItem("users")) ?? [];
+
+        // B4: Kiểm tra trùng email???
+        let isDulicate = false;
+        usersLocal.forEach((user) => {
+          if (user.email === emailValue) {
+            isDulicate = true;
+          }
+        });
+
+        // B5: Nếu không trùng --> Đẩy user lên localStorage
+        if (!isDulicate) {
+          usersLocal.push(user);
+          localStorage.setItem("users", JSON.stringify(usersLocal));
+
+          //   Chuyển hướng sang login
+          window.location = "login.html";
+        } else {
+          // Yêu cầu đăng ký lại
+          alert("vui lòng đăng ký lại");
+        }
+      }
+
+      function validate(user) {
+        const error = {
+          isError: false,
+          emailMsg: "",
+          passwordMsg: "",
+        };
+        const re =
+          /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (!user.email.match(re)) {
+          error.isError = true;
+          error.emailMsg = "Không đúng định dạng email. Vui lòng nhập lại";
+        }
+
+        if (user.password.length < 8) {
+          error.isError = true;
+          error.passwordMsg =
+            "Password không được dưới 8 ký tự. Vui lòng nhập lại";
+        }
+        return error;
+      }
+    </script>
+  </body>
+</html>

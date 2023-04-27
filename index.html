@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 18 - STORING DATA IN THE BROWSER</title>
+  </head>
+  <body>
+    <script>
+      const user = {
+        email: "khoaly@rikkeisoft.com",
+        password: 123456,
+      };
+      //   Đưa dữ liệu lên localStorage
+      localStorage.setItem("userLogin", JSON.stringify(user));
+
+      const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+      if (userLogin) {
+        alert("Người dùng đã đăng nhập");
+      } else {
+        alert("Vui lòng đăng nhập");
+      }
+      console.log("Kiểm tra user", userLogin);
+
+      //   Đưa dữ liệu lên session
+
+      //   sessionStorage.setItem("userLogin", JSON.stringify(user));
+
+      //   Lấy dữ liệu từ session về
+
+      const userSession = JSON.parse(sessionStorage.getItem("userLogin"));
+
+      console.log("Kiểm tra user session", userSession);
+
+      //   Thêm dữ liệu vào trong cookie
+
+      document.cookie =
+        "user=khoa;password=khongco;expires=Thu, 05 Jan 2025 23:59:00 UTC";
+    </script>
+  </body>
+</html>
