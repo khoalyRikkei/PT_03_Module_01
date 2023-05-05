@@ -1,0 +1,20 @@
+.btn-primary {
+  background-color: hsl(0, 0%, 100%);
+}
+
+[class*="container-"] {
+  background-color: green;
+  margin-bottom: 30px;
+  height: 200px;
+}
+
+[class*="col"] {
+  border: 5px solid red;
+  margin-bottom: 30px;
+  height: 200px;
+}
+
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
