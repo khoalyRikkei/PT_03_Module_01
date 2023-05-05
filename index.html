@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 19 - ES6</title>
+  </head>
+  <body>
+    <button onclick="handleClick()">Click me</button>
+    <script type="module">
+      // <!-- Demo tham số mặc định -->
+
+      import newDb from "./db.js";
+      import * as action from "./db2.js";
+
+      console.log("kiem tra db", newDb);
+      console.log("kiem tra db222", action.sp1);
+
+      function handleClick() {
+        alert("Hello");
+      }
+
+      window.handleClick = handleClick;
+
+      function addData(array = [], value) {
+        array.push(value);
+
+        return array;
+      }
+
+      const array1 = addData([1, 2, 4], 3);
+
+      console.log("Kiểm tra array 1", array1);
+
+      const array2 = addData(undefined, 3);
+
+      console.log("Kiểm tra array 2", array2);
+
+      // spread
+
+      const animal = ["cat", "dog", "pig"];
+
+      const animal2 = [...animal];
+
+      // rest và destructuring
+      const [a, ...rest] = animal;
+
+      function sum(a, b, c, ...other) {
+        console.log("Kiểm tra other", other);
+      }
+
+      sum(1, 2, 3, 4, 5, 6, 7);
+
+      const user = {
+        name: "Việt",
+        age: 22,
+        address: "Quảng Trị",
+        gender: true,
+      };
+
+      function update(user, data) {
+        const newData = { ...user, ...data };
+        return newData;
+      }
+
+      const newdata = update(user, { age: 23 });
+
+      console.log(newdata);
+
+      const [viet, thai, trung, ...other] = [
+        { name: "Việt", age: 22 },
+        { name: "Thái", age: 29 },
+        { name: "Trung", age: 25 },
+        { name: "Phương", age: 22 },
+        { name: "Sáng", age: 22 },
+      ];
+
+      const { name, ...key } = user;
+
+      console.log(viet);
+      console.log(other);
+
+      console.log(name, key);
+
+      // Arrow function
+
+      const getArea = (r) => {
+        return 3.14 * r * r;
+      };
+
+      const getArea2 = (r) => 3.14 * r * r;
+
+      // Xây dựng class
+
+      class Person {
+        constructor(name, age, gender) {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, address) {
+          super(name, age);
+          this.address = address;
+        }
+      }
+
+      const student1 = new Student("Tín", 29, "ĐN");
+
+      console.log("Kiểm tra học sinh", student1);
+    </script>
+  </body>
+</html>

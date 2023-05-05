@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <button onclick="handleAction('add')" id="add-edit">Thêm</button>
+    <button onclick="handleAction('delete')">Xóa</button>
+
+    <p id="user-info"></p>
+
+    <script>
+      const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+      const addEditElement = document.querySelector("#add-edit");
+      const userElement = document.querySelector("#user-info");
+      // Render lần đầu
+      render();
+
+      // Function bắt sự kiện add hoặc delete
+      function handleAction(action) {
+        // B1. lấy element của input
+        const userElement = document.querySelector("#input");
+        // B2. So sánh giá trị được truyền vào
+        if (action == "add") {
+          localStorage.setItem("userLogin", JSON.stringify(userElement.value));
+        } else {
+          localStorage.removeItem("userLogin");
+        }
+        // Cập nhật lại view /giao diện
+        render(action);
+      }
+      // Cập nhật lại giao diện DOM
+      function render(value) {
+        // Lấy dữ liệu mới nhất từ localStorage
+        const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+
+        if (value == "add") {
+          addEditElement.innerHTML = "Sửa";
+        } else {
+          addEditElement.innerHTML = "Thêm";
+          const userElement = document.querySelector("#input");
+          userElement.value = "";
+        }
+
+        userElement.innerHTML = userLogin;
+      }
+
+      //   if (userLogin) {
+      //     render();
+      //   }
+
+      //   function handleAction(action) {
+      //     const userElement = document.querySelector("#input");
+      //     if (action == "delete") {
+      //       localStorage.removeItem("userLogin");
+      //       userElement.value = "";
+      //     } else {
+      //       localStorage.setItem("userLogin", JSON.stringify(userElement.value));
+      //     }
+
+      //     render(action);
+      //   }
+
+      //   function render(action) {
+      //     const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+      //     addEditElement.innerHTML = action == "add" ? "Sửa" : "Thêm";
+      //     userElement.innerHTML = userLogin;
+      //   }
+    </script>
+  </body>
+</html>
