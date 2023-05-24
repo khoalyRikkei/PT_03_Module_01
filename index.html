@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      td,
+      th {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="handleTeam('team 1')">Team 1</button>
+    <button onclick="handleTeam('team 2')">Team 2</button>
+    <input
+      placeholder="Nhập tên user cần tìm"
+      oninput="handleOnInput(this.value)"
+    />
+    <!-- this là keyword của js -> chỉ element mà nó đang thực thi sự kiện -->
+    <button onclick="handeAdd()">Add</button>
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Nam</td>
+          <td><button>Edit</button><button>Delete</button></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Nam</td>
+          <td><button>Edit</button><button>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="./script.js"></script>
+  </body>
+</html>
