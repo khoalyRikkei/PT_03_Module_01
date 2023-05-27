@@ -93,6 +93,83 @@ function handeAdd() {
   renderTable(allUser);
 }
 
+// click --> mở ô input , gán name vào ô input, gán id vào thuộc tính name  của ô input
+function handleEdit(id, name) {
+  console.log(id, name);
+
+  // Hiển element input group
+  const elementInputGroup = document.querySelector(".edit-input");
+
+  // Lấy được element input
+  const elementInput = document.querySelector("#edit-user");
+
+  elementInputGroup.style.display = "block";
+  elementInput.name = id;
+  elementInput.value = name;
+}
+
+// xử lý update  --> cập lại dự liệu trong data, ẩn ô input
+
+function handleUpdate() {
+  // Hiển element input group
+
+  const elementInputGroup = document.querySelector(".edit-input");
+
+  // Lấy được element input
+  const elementInput = document.querySelector("#edit-user");
+
+  //  Lấy id cần chỉnh sửa dựa vào thuộc tính name của value
+  const idUser = elementInput.name;
+
+  //  Cập nhật dữ liệu
+
+  for (let index = 0; index < allUser.length; index++) {
+    const user = allUser[index];
+    if (user.id == idUser) {
+      user.name = elementInput.value;
+
+      // allUser[index].name = 'No name'
+      // console.log("userEdit", user);
+      // allUser[index] = user
+      //allUser.splice(index, 1, );
+      break;
+    }
+  }
+  // Set lại giá trị input về ban đầu
+  elementInput.name = "";
+  elementInput.value = "";
+  elementInputGroup.style.display = "none";
+  // render table
+  renderTable(allUser);
+}
+
+function handleDelete(id) {
+  const isDelete = confirm("Bạn chắc chắn muốn xóa");
+
+  console.log("delete", isDelete);
+
+  // Nếu người dùng từ chối xóa thì sẽ kết thúc function
+  if (!isDelete) {
+    return;
+  }
+  console.log(111111, id);
+
+  // Tìm phần tử có id trùng với id đã dược truyền vào từ button Delete
+  for (let index = 0; index < allUser.length; index++) {
+    const user = allUser[index];
+    if (user.id == id) {
+      console.log(user);
+      allUser.splice(index, 1);
+      break;
+    }
+  }
+
+  // render dữ liệu
+
+  renderTable(allUser);
+  console.log(2222, allUser);
+}
+
 // function có tính chất hoisting --> khai báo lên trên đầu
 function renderTable(data) {
   // B2. Xác định và lấy element cần thay đổi nội dung
@@ -108,7 +185,11 @@ function renderTable(data) {
     <tr>
         <td>${index + 1}</td>
         <td>${item.name}</td>
-    <td><button >Edit</button><button>Delete</button></td>
+    <td><button onclick="handleEdit('${item.id}', '${
+      item.name
+    }')">Edit</button><button onclick="handleDelete(${
+      item.id
+    })">Delete</button></td>
   </tr>
     `;
 
@@ -117,7 +198,7 @@ function renderTable(data) {
     //       (index + 1) +
     //       "</td><td>" +
     //       item.name +
-    //       "</td><td><button >Edit</button><button>Delete</button></td></tr>";
+    //       "</td><td><button>Edit</button><button>Delete</button></td></tr>";
   });
 
   // B3. thay đổi nội dung trong element --> render
