@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 20 - jquery</title>
+    <style>
+      tbody input[type="text"] {
+        border: none;
+        outline: none;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="text" id="test-input" />
+    <button>Add</button>
+
+    <button id="toggle">Toggle</button>
+    <h3>Hello Show</h3>
+
+    <!-- Xử lý form -->
+
+    <form>
+      <input type="text" placeholder="add to do" id="input-to-do" />
+      <input type="submit" value="Submit" />
+    </form>
+    <table border="1" cellpadding="20">
+      <caption>
+        To do list
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>To do</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button id="change-toggle">Change toggle</button>
+    <h1>Xin chào JS T3</h1>
+    <h2>Rikkei Academy</h2>
+
+    <script>
+      $(document).ready(() => {
+        // Ví dụ về selector
+        $("button").click(() => {
+          // Lấy giá trị của ô input
+          const value = $("#test-input").val();
+          console.log(11111, value);
+        });
+
+        $("h2").hide();
+        $("#change-toggle").click(() => {
+          $("h1").fadeToggle(1000, () => {
+            $("h2").fadeToggle();
+          });
+        });
+      });
+
+      // Xử lý resize
+      $(window).resize((event) => {
+        // Lấy thông tin của chiều dài và chiều rộng window
+        const width = event.currentTarget.innerWidth;
+        const height = event.currentTarget.innerHeight;
+        console.log("Width", width, "height", height);
+      });
+
+      // Xử lý toggle
+      $("#toggle").click(() => {
+        $("h3").toggle();
+      });
+
+      // Xử lý sự kiện form
+
+      $("form").submit((e) => {
+        e.preventDefault();
+        const value = $("#input-to-do").val();
+        // Đêm số lượng phần tử con trong thẻ cha
+        const index = $("tbody tr").length;
+        const content = ` <tr>
+          <td>${index + 1}</td>
+          <td><input value="${value}" type='text' readonly /></td>
+          <td><button onclick="handleEdit(${index})">Edit</button><button onclick="handleDelete(${index})">Xóa</button></td>
+        </tr>`;
+        $("tbody").append(content);
+      });
+
+      // Edit thông tin
+      function handleEdit(id) {
+        // Lấy phần tử element thứ id
+        const element = $("tbody").children().eq(id)[0];
+        // Tìm input trong element
+        const input = $(element).find("input")[0];
+
+        // Thay đổi thuộc tính của readonly
+        $(input).attr("readonly", false);
+      }
+
+      function handleDelete(id) {
+        // Lấy phần tử element thứ id
+        const element = $("tbody").children().eq(id)[0];
+
+        // Xóa được element
+        $(element).remove();
+      }
+    </script>
+  </body>
+</html>

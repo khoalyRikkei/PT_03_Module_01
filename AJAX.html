@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="data"></div>
+    <script>
+      // Lấy dữ liệu từ file
+      $.ajax("index.html").done((res) => {
+        const form = $(res).filter("form")[0];
+        console.log(form);
+        $("body").append(form);
+      });
+
+      // Lấy dữ liệu từ api
+      let users;
+
+      function getData() {
+        $.get("https://jsonplaceholder.typicode.com/users").done((result) => {
+          let content = "";
+          users = result;
+          console.log(result);
+          result.forEach((element) => {
+            content += `<li>${element.name} <button onclick="handleClick('${element.id}')">Edit</button></li>`;
+          });
+          $(".data").html(`<ul>${content}</ul>`);
+        });
+      }
+
+      getData();
+
+      function handleClick(id) {
+        const newUser = users.find((item) => item.id == id);
+
+        newUser.name = "Thái Đẹp Trai";
+
+        $.ajax({
+          type: "post",
+          url: "https://jsonplaceholder.typicode.com/users/",
+          data: newUser,
+        }).done((res) => {
+          console.log(res);
+          getData();
+        });
+      }
+    </script>
+  </body>
+</html>
